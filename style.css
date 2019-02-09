@@ -1,0 +1,157 @@
+html {
+    position: relative;
+    min-height: 100%;
+  }
+body {
+    background-image:url('images/market.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.navbar{
+    width: 100%;
+    padding-bottom: 1%;
+    opacity: .85;
+
+}
+.navbar-brand{
+    color:#eace6a;
+}
+
+ #search-container{
+    padding: 0px;
+    margin: 0px;
+}  
+
+.jumbotron {
+    background-color: black;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.card-header {
+    background-color: black;
+    color: #eace6a;
+}
+#logo {
+    height: 150px;
+    text-align: left;
+
+}
+h1 {
+    font-size: 30px;
+    text-align: right;
+    color: #eace6a;
+    font-weight: bolder;
+}
+h2 {
+    font-size: 15px;
+    text-align: right;
+    color: #eace6a;
+    font-style: italic;
+}
+
+h4{
+    font-size: 20px;
+}
+
+.flex-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#marketTimer{
+    border: white solid 1px;
+}
+
+#login-div{
+    float: right;
+    padding: 0px;
+}
+
+#logout {
+    display:none;
+}
+#signInModal{
+    display: none;
+}
+#signUpModal{
+    display: none;
+}
+#signinmodal-btn{
+    float: right;
+    margin-right: 5%;
+}
+#signupmodal-btn{
+    float: right;
+}
+
+#favs{
+    margin-top: 3%;
+}
+
+#history{
+    margin-top: 3%;
+}
+
+#home-btn{
+    margin-top: 3%;
+    color:#eace6a;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    line-height: 0.15em;
+    opacity: .75;
+    width: 100%;
+    height: 60px;
+    font-size: 12px;
+}
+
+#Welcome {
+    color:white;
+}
+
+a { 
+    color: rgb(240, 245, 226); 
+    text-decoration:none;
+    
+}
+
+#Current-new-table{
+    overflow-y: scroll;
+}
+
+.newslinks,.txtcol{
+    color: rgb(240, 245, 226);
+    font-weight: bold;
+}
+
+.dropdown-toggle {
+    border: 1px rgb(208, 255, 0) solid
+}
+.fa {
+    color: #CCCC00;
+}
+
+.navbarstyling{
+    background-color: #eace6a;
+    font-weight: bold;
+}
+
+#stockslisted,.colbold{
+    color: black;
+    font-weight: bold;
+}
+
+.btncol{
+    background-color: rgb(34, 66, 25);
+    font-weight: bold;
+    color: white;
+}
