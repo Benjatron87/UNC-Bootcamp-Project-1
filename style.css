@@ -131,6 +131,7 @@ a {
 .newslinks,.txtcol{
     color: rgb(240, 245, 226);
     font-weight: bold;
+    margin: 20px;
 }
 
 .dropdown-toggle {
@@ -154,4 +155,9 @@ a {
     background-color: rgb(34, 66, 25);
     font-weight: bold;
     color: white;
+}
+
+#clear-history{
+    float: right;
+    cursor: pointer;
 }
