@@ -70,7 +70,11 @@ $(document).ready(function() {
                 
                 for(var i = 0; i < response[input].chart.length; i++){
 
-                    stockValue.push(response[input].chart[i].close);
+                    var close = response[input].chart[i].close
+
+                    close = close.toFixed(2);
+
+                    stockValue.push(close);
                     date.push(response[input].chart[i].date);
 
                     num2++
