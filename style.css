@@ -132,6 +132,7 @@ a {
     color: rgb(240, 245, 226);
     font-weight: bold;
     margin: 20px;
+    cursor: pointer;
 }
 
 .dropdown-toggle {
