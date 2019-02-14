@@ -180,11 +180,13 @@ $(document).ready(function() {
             })
             .then(function(response){
 
+                var tbody = $("#newsArticles");
+
+                var table = $("<tr class="+item2+">")
+
+                if (response.articles[0] != undefined ){
+
                     console.log(response)
-
-                    var tbody = $("#newsArticles");
-
-                    var table = $("<tr class="+item2+">")
                 
                     for(i = 0; i < 5; i++){
 
@@ -201,7 +203,7 @@ $(document).ready(function() {
                             
                     };
                 
-                    var article = $("<tr>").text('Click here for latest news for '+item);
+                    var article = $("<tr>").text('Click here for latest news for ' + item);
 
                     article.attr("val", item2).addClass("newslinks");
 
@@ -217,6 +219,12 @@ $(document).ready(function() {
                         $(click1).toggle();
 
                     }); 
+                }
+                else{
+                    var article = $("<tr>").addClass("newslinks").text('No available news for ' + item);
+
+                    tbody.prepend( "<br>", article);
+                }
         });
     }
 
