@@ -13,9 +13,10 @@ body {
 }
 
 .navbar{
-    width: 100%;
+    width: 103%;
     padding-bottom: 1%;
     opacity: .85;
+    margin-bottom: 20px;
 
 }
 .navbar-brand{
@@ -99,9 +100,9 @@ h4{
     margin-top: 3%;
 }
 
-#home-btn{
-    margin-top: 3%;
+#home-button{
     color:#eace6a;
+    margin-left: 80px;
 }
 
 #footer {
@@ -128,7 +129,7 @@ a {
     overflow-y: scroll;
 }
 
-.newslinks,.txtcol{
+.txtcol{
     color: rgb(240, 245, 226);
     font-weight: bold;
     margin: 20px;
@@ -160,5 +161,25 @@ a {
 
 #clear-history{
     float: right;
+    cursor: pointer;
+}
+
+.margins{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.float-right{
+    float: right;
+}
+
+#margins{
+    margin-bottom: 100px;
+}
+
+.newslinks{
+    color: rgb(240, 245, 226);
+    font-weight: bold;
+    margin: 20px;
     cursor: pointer;
 }

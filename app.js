@@ -314,7 +314,7 @@ $(document).ready(function() {
     var tday =moment('16:00', 'HH:mm');
     var minAway=tday.diff(moment(),"s");
     var secAway=minAway*1000;
-    var marketStatus="Time Until market closes: ";
+    var marketStatus="Time Until Market Closes: ";
 
     var pastMidNight=parseInt((moment().format('HH')));
     var pastMidNightM=parseInt((moment().format('mm')));
@@ -326,10 +326,10 @@ $(document).ready(function() {
     
     if(minAway<0){
         var nextDay=moment().add(1, 'd').format('MM-DD-YYYY');
-        var open=moment(nextDay+'9:30', 'MM-DD-YYYY HH:mm')
+        var open=moment(nextDay+'9:31', 'MM-DD-YYYY HH:mm')
         var minAway=open.diff(moment(),"s");
         var secAway=minAway*1000;
-        var marketStatus="Time Until market opens: ";
+        var marketStatus="Time Until Market Opens: ";
     }
 
     //Accounting for weekend
@@ -356,7 +356,7 @@ $(document).ready(function() {
         (   (weekday==1) && ((parseInt(moment().format('HH'))<9) || (parseInt(moment().format('HH'))==9 && (parseInt(moment().format('mm')))<25))
         )
     ){  //check if the current date is less than monday
-        $("#marketTimer").html("Closed on weekends Reopens on "+monday.format('MM/DD/YYYY')+" @ 9:30 a.m"); 
+        $("#marketTimer").html("Closed On Weekends Reopens On "+monday.format('MM/DD/YYYY')+" @ 9:30 a.m"); 
     }
     else {//show timer
  
@@ -369,9 +369,9 @@ $(document).ready(function() {
     var minutesQ = Math.floor((distanceQ % (1000 * 60 * 60)) / (1000 * 60));
     var secondsQ = Math.floor((distanceQ % (1000 * 60)) / 1000);
     if (minutesQ<9){
-        var delim=" , 0";
+        var delim=" : 0";
     }else{
-        var delim=" , "; 
+        var delim=" : "; 
     }
     if (hoursQ<9){
         var hdelim=" 0";
@@ -379,7 +379,7 @@ $(document).ready(function() {
         var hdelim=" "; 
     }
 
-        if(secondsQ>=0){$("#marketTimer").html("Financial News: &nbsp &nbsp &nbsp  &nbsp &nbsp"+marketStatus+hdelim+hoursQ+' hrs '+delim+minutesQ+' min'); }
+        if(secondsQ>=0){$("#marketTimer").html(marketStatus+hdelim+hoursQ+' hrs '+delim+minutesQ+' min'); }
         
         if (distanceQ < 0 ) {
             clearInterval(y);
@@ -387,5 +387,12 @@ $(document).ready(function() {
     }, 1000);
 
     }
+
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
 
 });

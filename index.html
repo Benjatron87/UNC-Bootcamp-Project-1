@@ -21,39 +21,47 @@
  
 </head>
 <body>  
+
     <!--Navigation bar-->
     
-    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: black;">
+    <nav class="navbar navbar-expand-sm navbar-light row" style="background-color: black;">
+
+        <div class="col-md-4">
+
             <a id="home-button" class="navbar-brand" style="color:#eace6a" href="#">S4H</a>
+
             <a id="history-button" class="navbar-brand" style="color:#eace6a" href="#">History</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+
+        </div>
+
+        
+        <div class="col-md-5 d-flex justify-content-right float-right">
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                        <div class="btn-group">
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                              </div>
-                </li>
-              </ul>
-              <button type="button" class="btn btn-default btn-lg" value="hey">
-                </button>
-              <form class="form-inline my-2 my-lg-0">
-                <input id="user-input" class="form-control mr-sm-2" type="search" placeholder="Enter Ticker Symbol" aria-label="Search">
-                <button id="add-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">$$</button>
-              </form>
+
+                <div class="btn-group margins">
+
+                    <div class="card-header" id="marketTimer"></div>
+
+                </div>
             </div>
+        </div>
+
+        <div class="col-md-3 float-right">
+                
+                <form class="form-inline my-2 my-lg-0">
+
+                <input id="user-input" class="form-control mr-sm-2" type="search" placeholder="Enter Ticker Symbol" aria-label="Search">
+
+                <button id="add-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">$$</button>
+
+                </form>
+            </div>
+        </div>
     </nav>
          
 
-    <div class="container">
+    <div class="container" id="margins">
             <!-- Jumbotron -->
                 <div class="jumbotron">
                     <div class='flex-div'>
@@ -84,9 +92,6 @@
                     </div>
                         <div class="col-lg-6">
                         <div>
-                                <div class="card-header" id="marketTimer">
-                                        Financial News
-                                    </div>
                             <table class="table table-striped table-hover" id="Current-new-table">
                                 <thead>
                                     <tr>
