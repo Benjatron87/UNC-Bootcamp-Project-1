@@ -180,44 +180,43 @@ $(document).ready(function() {
             })
             .then(function(response){
 
-                console.log(response)
+                    console.log(response)
 
-                var tbody = $("#newsArticles");
+                    var tbody = $("#newsArticles");
 
-                var table = $("<tr class="+item2+">")
-            
-                for(i = 0; i < 5; i++){
-
-                    var newsURL = response.articles[i].url;
-                    var title = response.articles[i].title;
-                    var dates = response.articles[i].publishedAt.substr(0,10);
-                    var author = response.articles[i].author;
-                    
-                    
-
-                    var newslink = $("<tr>").html('<a href="'+newsURL+'" target="blank">'+title+' (Date: '+dates+') '+'Author: '+author+'</a>');
-
-                    table.append('<br>', newslink).css('font-weight', 'normal');
-                        
-                };
-            
-                var article = $("<tr>").text('Click here for latest news for '+item);
-
-                article.attr("val", item2).addClass("newslinks");
-
-                tbody.prepend( "<br>", article);
-
-                article.append(table);
-
-                $('.'+item2).hide();  
-
-                $(".newslinks").unbind().on("click", function(){ 
-                    var click1 = "."+$(this).attr("val");
+                    var table = $("<tr class="+item2+">")
                 
-                    $(click1).toggle();
+                    for(i = 0; i < 5; i++){
 
-                }); 
-    
+                        var newsURL = response.articles[i].url;
+                        var title = response.articles[i].title;
+                        var dates = response.articles[i].publishedAt.substr(0,10);
+                        var author = response.articles[i].author;
+                        
+                        
+
+                        var newslink = $("<tr>").html('<a href="'+newsURL+'" target="blank">'+title+' (Date: '+dates+') '+'Author: '+author+'</a>');
+
+                        table.append('<br>', newslink).css('font-weight', 'normal');
+                            
+                    };
+                
+                    var article = $("<tr>").text('Click here for latest news for '+item);
+
+                    article.attr("val", item2).addClass("newslinks");
+
+                    tbody.prepend( "<br>", article);
+
+                    article.append(table);
+
+                    $('.'+item2).hide();  
+
+                    $(".newslinks").unbind().on("click", function(){ 
+                        var click1 = "."+$(this).attr("val");
+                    
+                        $(click1).toggle();
+
+                    }); 
         });
     }
 
@@ -228,6 +227,9 @@ $(document).ready(function() {
             stock(popStocks[i]);
 
         }
+
+        hideApp();
+
     });
 
 // when clicking the add-button adds the stock to the stock div
@@ -388,11 +390,32 @@ $(document).ready(function() {
 
     }
 
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-      });
+    function showApp(){
+        $("#user-input").show()
+        $("#home-button").show()
+        $("#history-button").show()
+        $("#add-button").show()
+        $("#hide").show()
+        $("#login-screen").hide()
+        $("#logout-button").show()
+    }
+
+    function hideApp(){
+        $("#user-input").hide()
+        $("#home-button").hide()
+        $("#history-button").hide()
+        $("#add-button").hide()
+        $("#hide").hide()
+        $("#logout-button").hide()
+        $("#login-screen").show()
+    }
+
+    $("#login-button").on('click', function(){
+        showApp();
+    })
+
+    $("#logout-button").on('click', function(){
+        hideApp();
+    })
 
 });

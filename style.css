@@ -102,7 +102,7 @@ h4{
 
 #home-button{
     color:#eace6a;
-    margin-left: 80px;
+    margin-left: 10px;
 }
 
 #footer {
@@ -182,4 +182,44 @@ a {
     font-weight: bold;
     margin: 20px;
     cursor: pointer;
+}
+
+#login-button{
+    margin-left: 50px;
+    color: #CCCC00;
+    background: rgb(0, 0, 100);
+    border: rgb(0, 0, 202);
+    padding: 10px;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+#new-account{
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: #CCCC00;
+    background: rgb(0, 0, 100);
+    border: rgb(0, 0, 202);
+    padding: 10px;
+    border-radius: 5%;
+    cursor: pointer;
+
+}
+
+#logout-button{
+    color: rgb(0, 0, 255);
+    border: 2px rgb(0, 0, 255) solid;
+    padding: 5px;
+    border-radius: 5%;
+    cursor: pointer;
+    margin-left: 80px;
+}
+
+#new-account:hover, #login-button:hover{
+    background: rgb(0, 0, 153);
+}
+
+#logout-button:hover{
+    background: rgb(0, 0, 255);
+    color: white;
 }

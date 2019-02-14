@@ -26,7 +26,9 @@
     
     <nav class="navbar navbar-expand-sm navbar-light row" style="background-color: black;">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
+
+            <button id="logout-button" class="btn" type="submit">Log Out</button>
 
             <a id="home-button" class="navbar-brand" style="color:#eace6a" href="#">S4H</a>
 
@@ -35,13 +37,13 @@
         </div>
 
         
-        <div class="col-md-5 d-flex justify-content-right float-right">
+        <div class="col-md-6 d-flex justify-content-center">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
 
-                <div class="btn-group margins">
+                <div class="btn-group margins d-flex justify-content-center">
 
-                    <div class="card-header" id="marketTimer"></div>
+                    <div class="card-header d-flex justify-content-center" id="marketTimer"></div>
 
                 </div>
             </div>
@@ -71,7 +73,7 @@
                         <h2>Saving your money for the fallout</h2>
                         </div>
                     </div>
-                <div class="row mb-3">
+                <div id="hide" class="row mb-3">
                     <div class="col-lg-6">
                         <div class="card card-default" id="stocksListed">
                             
@@ -103,6 +105,30 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center">
+                        
+                    <div id="login-screen">
+
+                        <h1>
+                            Login to S4H:
+                        </h1>
+
+                        <input type="text" placeholder="Enter Username" name="uname" required>
+
+                        <br><br>
+
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+
+                        <br><br>
+
+                        <button id="login-button" type="submit">Login</button>
+
+                        <br><br>
+                    
+                        <button id="new-account" type="submit">Make Account</button>
                     </div>
                 </div>
             <!--end of jumbotron div-->
