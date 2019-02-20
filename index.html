@@ -116,19 +116,26 @@
                             Login to S4H:
                         </h1>
 
-                        <input type="text" placeholder="Enter Username" name="uname" required>
+                        <input id="email" type="text" placeholder="Enter Email" name="uname" required>
 
                         <br><br>
 
-                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <input id="password" type="password" placeholder="Enter Password" name="psw" required>
+
+                        <br>
+
+                        <a style="color: red" id="error"></a>
 
                         <br><br>
 
-                        <button id="login-button" type="submit">Login</button>
+                        <div class="row d-flex justify-content-center">
 
-                        <br><br>
-                    
-                        <button id="new-account" type="submit">Make Account</button>
+                            <button id="login-button" type="submit">Login</button>
+
+                            <br><br>
+                        
+                            <button id="new-account" type="submit">Sign Up</button>
+                        </div>
                     </div>
                 </div>
             <!--end of jumbotron div-->
@@ -168,7 +175,7 @@
                     <h4>Contact Us</h4>
                     <p>Hilton Garden Inn</p>
                     <p>1500 RDU Center Drive, Cary NC</p>
-                    <p>919-867-5309</p>
+                    <p>919-896-0710</p>
                 </div>
             </div>
     <!-- </div> -->

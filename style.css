@@ -103,6 +103,7 @@ h4{
 #home-button{
     color:#eace6a;
     margin-left: 10px;
+    display: none;
 }
 
 #footer {
@@ -185,25 +186,24 @@ a {
 }
 
 #login-button{
-    margin-left: 50px;
     color: #CCCC00;
     background: rgb(0, 0, 100);
     border: rgb(0, 0, 202);
-    padding: 10px;
+    padding: 5px;
     border-radius: 5%;
     cursor: pointer;
+    margin: 5px;
+    margin-left: 0;
 }
 
 #new-account{
-    margin-bottom: 20px;
-    margin-left: 20px;
     color: #CCCC00;
     background: rgb(0, 0, 100);
     border: rgb(0, 0, 202);
-    padding: 10px;
+    padding: 5px;
     border-radius: 5%;
     cursor: pointer;
-
+    margin: 5px;
 }
 
 #logout-button{
@@ -212,7 +212,8 @@ a {
     padding: 5px;
     border-radius: 5%;
     cursor: pointer;
-    margin-left: 80px;
+    margin-left: 30px;
+    display: none;
 }
 
 #new-account:hover, #login-button:hover{
@@ -222,4 +223,17 @@ a {
 #logout-button:hover{
     background: rgb(0, 0, 255);
     color: white;
+}
+
+#user-input{
+    margin-left: 40px;
+    display: none;
+}
+
+#add-button, #history-button{
+   display: none;
+}
+
+#hide{
+    visibility: hidden;
 }

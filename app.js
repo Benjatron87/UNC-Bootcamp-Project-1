@@ -1,5 +1,5 @@
 $("#clear-history").hide();
-$(document).ready(function() {
+
     var config = {
         apiKey: "AIzaSyCHf--MzFoBdPYS1zbDOsNR5fsTJxgxdD0",
         authDomain: "stock-search-app.firebaseapp.com",
@@ -9,13 +9,14 @@ $(document).ready(function() {
         messagingSenderId: "1075965615373"
     }
 
-      firebase.initializeApp(config);
+    firebase.initializeApp(config);
 
     let database = firebase.database();
     let date = []
     let stockValue = []
     let history = [];
     let num = 0;
+    let addStock = true;
 
     let popStocks = ['AAPL', 'MSFT', 'FB', 'AMZN', 'GOOG'];
 
@@ -230,78 +231,12 @@ $(document).ready(function() {
 
     $(window).on( "load", function() {
 
-        for(var i = 0; i < popStocks.length; i++){
-
-            stock(popStocks[i]);
-
-        }
-
         hideApp();
 
     });
 
 // when clicking the add-button adds the stock to the stock div
-    $("#add-button").on("click", function(event) {
-        event.preventDefault()
-
-        var searched = $("#user-input").val().trim();
-
-        searched = searched.toUpperCase();
-
-        var isInArray = popStocks.indexOf(searched);
-
-        console.log(isInArray)
-
-        if (isInArray == -1){
-            
-            stock(searched)
-        }
-
-        // stores this as recent searches in firebase
-        database.ref().push({
-            searches: $("#user-input").val().trim()
-           });
-    })
     
-    database.ref().on("child_added", function(snapshot) {
-
-        var snapVal = snapshot.val();
-
-        var isPresent = history.indexOf(snapVal.searches);
-
-        if(isPresent == -1){
-            history.push(snapVal.searches);
-        }
-
-        console.log(history);
-
-        $("#clear-history").on('click', function(){
-
-            database.ref().remove()
-            history = [];
-            $("#stockslisted").empty();
-            $("#newsArticles").empty();
-
-        })
-        console.log(history)
-
-    });
-
-    $("#history-button").on('click', function(){
-        event.preventDefault()
-
-        $("#stockslisted").empty();
-        $("#newsArticles").empty();
-        $("#stock").text('Search History:');
-        $("#clear-history").show();
-
-        for(var i = 0; 1 < history.length; i++){
-
-            stock(history[i]);
-            console.log(history[i])
-        }
-
-    })
 
     $("#home-button").on('click', function(){
         event.preventDefault()
@@ -394,7 +329,7 @@ $(document).ready(function() {
         if (distanceQ < 0 ) {
             clearInterval(y);
         }
-    }, 1000);
+    }, 500);
 
     }
 
@@ -419,11 +354,136 @@ $(document).ready(function() {
     }
 
     $("#login-button").on('click', function(){
-        showApp();
+        var data = {
+            email: $('#email').val(), //get the email from Form
+            password : $('#password').val() //get the pass from Form
+          };
+          firebase
+            .auth()
+            .signInWithEmailAndPassword(data.email, data.password)
+            .then( function(user){
+
+                $("#hide").css('visibility', 'visible')
+                $("#error").empty()
+                showApp()
+
+                for(var i = 0; i < popStocks.length; i++){
+
+                    stock(popStocks[i]);
+        
+                }
+
+                $("#add-button").on("click", function(event) {
+                    event.preventDefault()
+            
+                    var searched = $("#user-input").val().trim();
+            
+                    searched = searched.toUpperCase();
+            
+                    var isInArray = popStocks.indexOf(searched);
+            
+                    if(addStock){
+            
+                        if (isInArray == -1){
+                            
+                            stock(searched)
+                        }
+            
+                    }
+                    else{
+                        stock(searched)
+                    }
+            
+                    // stores this as recent searches in firebase
+                    database.ref().child(user.uid).set({
+
+                        searches: $("#user-input").val().trim()
+
+                      })
+                })
+                
+                database.ref().on("child_added", function(snapshot) {
+            
+                    var snapVal = snapshot.val();
+            
+                    var isPresent = history.indexOf(snapVal.searches);
+            
+                    if(isPresent == -1){
+                        history.push(snapVal.searches);
+                    }
+            
+                    console.log(history);
+            
+                    $("#clear-history").on('click', function(){
+            
+                        database.ref().remove()
+                        history = [];
+                        $("#stockslisted").empty();
+                        $("#newsArticles").empty();
+            
+                    })
+                    console.log(history)
+            
+                });
+
+                $("#history-button").on('click', function(){
+                    event.preventDefault()
+            
+                    addStock = false
+            
+                    $("#stockslisted").empty();
+                    $("#newsArticles").empty();
+                    $("#stock").text('Search History:');
+                    $("#clear-history").show();
+            
+                    for(var i = 0; 1 < history.length; i++){
+            
+                        stock(history[i]);
+                        console.log(history[i])
+                    }
+            
+                })
+
+            })
+            .catch(function(error){
+              console.log("Error creating user:", error);
+
+              var err;
+              err = (error.code)
+
+              console.log(err)
+
+              $("#error").text(err);
+            });
     })
 
     $("#logout-button").on('click', function(){
         hideApp();
+        $("#stockslisted").empty();
+        $("#newsArticles").empty();
+        $("#error").empty()
+
+        firebase.auth().signOut()
     })
 
-});
+    $("#new-account").on('click', function(){
+        var data = {
+            email: $('#email').val(), //get the email from Form
+            password : $('#password').val() //get the pass from Form
+          };
+          firebase
+            .auth()
+            .createUserWithEmailAndPassword(data.email, data.password)
+            .then( function(user){
+              console.log("Successfully created user account with uid:", user.uid);
+              $("#error").text("Account Created")
+            })
+            .catch(function(error){
+              console.log("Error creating user:", error);
+
+              var err = error.code
+
+              $("#error").text(err);
+            });
+    })
+
