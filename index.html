@@ -26,7 +26,7 @@
     
     <nav class="navbar navbar-expand-sm navbar-light row" style="background-color: black;">
 
-        <div class="col-md-3">
+        <div class="col-3">
 
             <button id="logout-button" class="btn" type="submit">Log Out</button>
 
@@ -37,7 +37,7 @@
         </div>
 
         
-        <div class="col-md-6 d-flex justify-content-center">
+        <div class="col-6 d-flex justify-content-center">
 
             <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
 
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="col-md-3 float-right">
+        <div class="col-3 float-right">
                 
                 <form class="form-inline my-2 my-lg-0">
 
@@ -108,35 +108,37 @@
                     </div>
                 </div>
 
-                <div class="row d-flex justify-content-center">
-                        
-                    <div id="login-screen">
+                <div class="container d-flex justify-content-center">
 
-                        <h1>
-                            Login to S4H:
-                        </h1>
+                        <div class="row" id="login-screen">
 
-                        <input id="email" type="text" placeholder="Enter Email" name="uname" required>
+                            <div class="col-3"></div>
 
-                        <br><br>
+                            <div class="col-6">
 
-                        <input id="password" type="password" placeholder="Enter Password" name="psw" required>
+                                <h1 id="login-signup">
+                                    Login/Sign Up
+                                </h1>
 
-                        <br>
+                                <br>
 
-                        <a style="color: red" id="error"></a>
+                                <input id="email" type="text" placeholder="Enter Email" name="uname" required>
 
-                        <br><br>
+                                <button id="login-button" type="submit">Login</button>
 
-                        <div class="row d-flex justify-content-center">
+                                <input id="password" type="password" placeholder="Enter Password" name="psw" required>
 
-                            <button id="login-button" type="submit">Login</button>
+                                <button id="new-account" type="submit">Sign Up</button>
 
-                            <br><br>
-                        
-                            <button id="new-account" type="submit">Sign Up</button>
+                                <br>
+
+                                <a style="color: red" id="error"></a>
+                            </div>
+
+                            <div class="col-3"></div>
+
                         </div>
-                    </div>
+        
                 </div>
             <!--end of jumbotron div-->
             </div>

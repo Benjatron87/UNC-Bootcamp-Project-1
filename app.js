@@ -382,24 +382,17 @@ $("#clear-history").hide();
             
                     var isInArray = popStocks.indexOf(searched);
             
-                    if(addStock){
-            
-                        if (isInArray == -1){
-                            
-                            stock(searched)
-                        }
-            
-                    }
-                    else{
+                    if (isInArray == -1){
+                        
                         stock(searched)
                     }
             
                     // stores this as recent searches in firebase
-                    database.ref().child(user.uid).set({
+                    database.ref().push({
 
                         searches: $("#user-input").val().trim()
 
-                      })
+                    })
                 })
                 
                 database.ref().on("child_added", function(snapshot) {
@@ -457,33 +450,33 @@ $("#clear-history").hide();
             });
     })
 
-    $("#logout-button").on('click', function(){
-        hideApp();
-        $("#stockslisted").empty();
-        $("#newsArticles").empty();
-        $("#error").empty()
+        $("#logout-button").on('click', function(){
+            hideApp();
+            $("#stockslisted").empty();
+            $("#newsArticles").empty();
+            $("#error").empty()
 
-        firebase.auth().signOut()
-    })
+            firebase.auth().signOut()
+        })
 
-    $("#new-account").on('click', function(){
-        var data = {
-            email: $('#email').val(), //get the email from Form
-            password : $('#password').val() //get the pass from Form
-          };
-          firebase
-            .auth()
-            .createUserWithEmailAndPassword(data.email, data.password)
-            .then( function(user){
-              console.log("Successfully created user account with uid:", user.uid);
-              $("#error").text("Account Created")
-            })
-            .catch(function(error){
-              console.log("Error creating user:", error);
+        $("#new-account").on('click', function(){
+            var data = {
+                email: $('#email').val(), //get the email from Form
+                password : $('#password').val() //get the pass from Form
+            };
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword(data.email, data.password)
+                .then( function(user){
+                console.log("Successfully created user account with uid:", user.uid);
+                $("#error").text("Account Created")
+                })
+                .catch(function(error){
+                console.log("Error creating user:", error);
 
-              var err = error.code
+                var err = error.code
 
-              $("#error").text(err);
-            });
+                $("#error").text(err);
+        });
     })
 
