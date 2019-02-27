@@ -256,7 +256,7 @@ $("#clear-history").hide();
     })
 
     ////Market close/open TIMER
-    var tday =moment('16:00', 'HH:mm');
+    var tday =moment('16:01', 'HH:mm');
     var minAway=tday.diff(moment(),"s");
     var secAway=minAway*1000;
     var marketStatus="Time Until Market Closes: ";

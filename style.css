@@ -246,3 +246,11 @@ a {
 #login-screen{
     padding-bottom: 150px;
 }
+
+@media screen and (max-width: 575px){
+
+    #login-screen{
+        width: 80%;
+    }
+
+}
