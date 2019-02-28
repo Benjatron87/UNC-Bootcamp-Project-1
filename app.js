@@ -1,4 +1,4 @@
-$("#clear-history").hide();
+    $("#clear-history").hide();
 
     var config = {
         apiKey: "AIzaSyCHf--MzFoBdPYS1zbDOsNR5fsTJxgxdD0",
@@ -189,18 +189,18 @@ $("#clear-history").hide();
 
                     console.log(response)
                 
-                    for(i = 0; i < 5; i++){
+                    for(i = 0; i < response.articles.length; i++){
 
                         var newsURL = response.articles[i].url;
                         var title = response.articles[i].title;
                         var dates = response.articles[i].publishedAt.substr(0,10);
                         var author = response.articles[i].author;
                         
-                        
+                        if(i < 5){
+                            var newslink = $("<tr>").html('<a href="'+newsURL+'" target="blank">'+title+' (Date: '+dates+') '+'Author: '+author+'</a>');
 
-                        var newslink = $("<tr>").html('<a href="'+newsURL+'" target="blank">'+title+' (Date: '+dates+') '+'Author: '+author+'</a>');
-
-                        table.append('<br>', newslink).css('font-weight', 'normal');
+                            table.append('<br>', newslink).css('font-weight', 'normal');
+                        }
                             
                     };
                 
@@ -429,7 +429,7 @@ $("#clear-history").hide();
                     $("#stock").text('Search History:');
                     $("#clear-history").show();
             
-                    for(var i = 0; 1 < history.length; i++){
+                    for(let i = 0; i < history.length; i++){
             
                         stock(history[i]);
                         console.log(history[i])
@@ -456,7 +456,7 @@ $("#clear-history").hide();
             $("#newsArticles").empty();
             $("#error").empty()
 
-            firebase.auth().signOut()
+            firebase.auth().signOut();
         })
 
         $("#new-account").on('click', function(){
@@ -479,4 +479,4 @@ $("#clear-history").hide();
                 $("#error").text(err);
         });
     })
-
+      
